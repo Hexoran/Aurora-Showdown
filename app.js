@@ -104,6 +104,12 @@ global.Punishments = require('./punishments');
 
 global.Chat = require('./chat');
 
+global.sqlite3 = require('sqlite3');
+
+global.Db = require('origindb')('config/db');
+
+global.EM = {};
+
 global.Rooms = require('./rooms');
 
 global.Verifier = require('./verifier');
