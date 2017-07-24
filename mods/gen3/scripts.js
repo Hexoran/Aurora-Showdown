@@ -6,7 +6,10 @@ exports.BattleScripts = {
 	init: function () {
 		for (let i in this.data.Pokedex) {
 			delete this.data.Pokedex[i].abilities['H'];
+<<<<<<< HEAD
 			if (this.getAbility(this.data.Pokedex[i].abilities[1]).gen > 3) delete this.data.Pokedex[i].abilities[1];
+=======
+>>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 		}
 		let specialTypes = {Fire:1, Water:1, Grass:1, Ice:1, Electric:1, Dark:1, Psychic:1, Dragon:1};
 		let newCategory = '';
@@ -338,7 +341,8 @@ exports.BattleScripts = {
 		let ability0 = this.getAbility(abilities[0]);
 		let ability1 = this.getAbility(abilities[1]);
 		ability = ability0.name;
-		if (abilities[1]) {
+		if (ability0.gen !== 3) ability = ability1.name;
+		if (ability0.gen === 3 && ability1.gen === 3) {
 			if (ability0.rating <= ability1.rating) {
 				if (this.random(2)) ability = ability1.name;
 			} else if (ability0.rating - 0.6 <= ability1.rating) {
