@@ -3,7 +3,7 @@
  * Pokemon Showdown - http://pokemonshowdown.com/
  *
  * This handles chat and chat commands sent from users to chatrooms
- * and PMs. The main function you're lookoing for is Chat.parse
+ * and PMs. The main function you're looking for is Chat.parse
  * (scroll down to its definition for details)
  *
  * Individual commands are put in:
@@ -38,6 +38,24 @@ const BROADCAST_TOKEN = '!';
 const FS = require('./fs');
 
 let Chat = module.exports;
+
+function getServersAds(text) {
+	let aux = text.toLowerCase();
+	let serversAds = [];
+	let spamindex;
+	let actualAd = '';
+	while (aux.indexOf(".psim.us") > -1) {
+		spamindex = aux.indexOf(".psim.us");
+		actualAd = '';
+		for (let i = spamindex - 1; i >= 0; i--) {
+			if (aux.charAt(i).replace(/[^a-z0-9]/g, '') === '') break;
+			actualAd = aux.charAt(i) + actualAd;
+		}
+		if (actualAd.length) serversAds.push(toId(actualAd));
+		aux = aux.substr(spamindex + ".psim.us".length);
+	}
+	return serversAds;
+}
 
 // Regex copied from the client
 const domainRegex = '[a-z0-9\\-]+(?:[.][a-z0-9\\-]+)*';
@@ -770,6 +788,33 @@ class CommandContext {
 			if (Config.chatfilter) {
 				return Config.chatfilter.call(this, message, user, room, connection, targetUser);
 			}
+			
+			//servers Spam
+			if (!user.can('bypassall') && Rooms('staff')) {
+				let serverexceptions = {'aurora': 1, 'showdown': 1, 'smogtours': 1};
+				if (Config.serverexceptions) {
+					for (var i in Config.serverexceptions) serverexceptions[i] = 1;
+				}
+				let serverAd = getServersAds(message);
+				if (message.indexOf('pandorashowdown.net', 'c9users.io', 'rhcloud.com', 'herokuapp.com') >= 0) serverAd.push('pandora');
+				if (serverAd.length) {
+					for (var i = 0; i < serverAd.length; i++) {
+						if (!serverexceptions[serverAd[i]]) {
+							if (!room && targetUser) {
+								connection.send('|pm|' + user.getIdentity() + '|' + targetUser.getIdentity() + '|' + message);
+								Rooms('staff').add('|c|' + user.getIdentity() + '|(__PM a ' + targetUser.getIdentity() + '__) -- ' + message);
+								Rooms('staff').update();
+							} else if (room) {
+								connection.sendTo(room, '|c|' + user.getIdentity(room.id) + '|' + message);
+								Rooms('staff').add('|c|' + user.getIdentity(room.id) + '|(__' + room.id + '__) -- ' + message);
+								Rooms('staff').update();
+							}
+							return false;
+						}
+					}
+				}
+			}
+
 			return message;
 		}
 
