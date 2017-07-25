@@ -8,7 +8,7 @@ if (!room) {
 
 	room.isPrivate = true;
 	room.staffRoom = true;
-	room.staffAutojoin = true;
+	room.staffAutojoin = false;
 	room.addedUsers = {};
 
 	if (room.chatRoomData) {
