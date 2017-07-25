@@ -62,15 +62,7 @@ exports.Formats = [
 
 		mod: 'gen7',
 		searchShow: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ruleset: ['[Gen 7] OU'],
-=======
-		ruleset: ['[Gen 7] OU', 'Pokemon'],
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
-=======
-		ruleset: ['[Gen 7] OU'],
->>>>>>> e9e66afa0c34e8818042568947c2b67ebf2f3e62
 		banlist: ['OU', 'BL', 'Drizzle', 'Power Construct', 'Mewnium Z'],
 	},
 	{
@@ -79,15 +71,7 @@ exports.Formats = [
 
 		mod: 'gen7',
 		challengeShow: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ruleset: ['[Gen 7] UU'],
-=======
-		ruleset: ['[Gen 7] UU', 'Pokemon'],
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
-=======
-		ruleset: ['[Gen 7] UU'],
->>>>>>> e9e66afa0c34e8818042568947c2b67ebf2f3e62
 		banlist: ['Conkeldurr'],
 	},
 	{
@@ -100,15 +84,7 @@ exports.Formats = [
 
 		mod: 'gen7',
 		searchShow: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ruleset: ['[Gen 7] UU'],
-=======
-		ruleset: ['[Gen 7] UU', 'Pokemon'],
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
-=======
-		ruleset: ['[Gen 7] UU'],
->>>>>>> e9e66afa0c34e8818042568947c2b67ebf2f3e62
 		banlist: ['UU', 'BL2'],
 	},
 	{
@@ -117,15 +93,7 @@ exports.Formats = [
 
 		mod: 'gen7',
 		challengeShow: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ruleset: ['[Gen 7] UU'],
-=======
-		ruleset: ['[Gen 7] UU', 'Pokemon'],
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
-=======
-		ruleset: ['[Gen 7] UU'],
->>>>>>> e9e66afa0c34e8818042568947c2b67ebf2f3e62
 		banlist: ['UU', 'BL2'],
 	},
 	{
@@ -888,15 +856,7 @@ exports.Formats = [
 
 		gameType: 'doubles',
 		searchShow: false,
-<<<<<<< HEAD
-<<<<<<< HEAD
 		ruleset: ['[Gen 6] Doubles OU'],
-=======
-		ruleset: ['[Gen 6] Doubles OU', 'Pokemon'],
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
-=======
-		ruleset: ['[Gen 6] Doubles OU'],
->>>>>>> e9e66afa0c34e8818042568947c2b67ebf2f3e62
 		banlist: [
 			'Aegislash', 'Amoonguss', 'Arcanine', 'Azumarill', 'Bisharp', 'Breloom', 'Charizard-Mega-Y', 'Charizardite Y',
 			'Conkeldurr', 'Cresselia', 'Diancie-Mega', 'Diancite', 'Ferrothorn', 'Garchomp', 'Gardevoir-Mega', 'Gardevoirite',
