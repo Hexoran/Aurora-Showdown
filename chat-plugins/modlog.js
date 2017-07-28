@@ -241,17 +241,10 @@ function prettifyResults(rawResults, room, searchString, exactSearch, addModlogL
 	}).join(`<br />`);
 	let preamble;
 	if (searchString) {
-<<<<<<< HEAD
-		preamble = `|popup||wide||modal||html|<p>The last ${lines} logged actions containing ${searchString} on ${roomName}.` +
-						(exactSearch ? "" : " Add quotes to the search parameter to search for a phrase, rather than a user.");
-	} else {
-		preamble = `|popup||wide||modal||html|<p>The last ${lines} lines of the Moderator Log of ${roomName}.`;
-=======
 		preamble = `|popup||wide||html|<p>The last ${lines} logged actions containing ${searchString} on ${roomName}.` +
 						(exactSearch ? "" : " Add quotes to the search parameter to search for a phrase, rather than a user.");
 	} else {
 		preamble = `|popup||wide||html|<p>The last ${lines} lines of the Moderator Log of ${roomName}.`;
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 	}
 	preamble +=	`</p><p><small>[${Chat.toTimestamp(new Date(), {hour12: true})}] \u2190 current server time</small></p>`;
 	return preamble + resultString;
