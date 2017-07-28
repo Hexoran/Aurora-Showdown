@@ -17,13 +17,9 @@ const MONITOR_CLEAN_TIMEOUT = 2 * 60 * 60 * 1000;
  * delta of time since the last time it was committed. Actions include
  * connecting to the server, starting a battle, validating a team, and
  * sending/receiving data over a connection's socket.
-<<<<<<< HEAD
- */
-=======
  * @augments {Map<string, [number, number]>}
  */
 // @ts-ignore TypeScript bug
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 class TimedCounter extends Map {
 	/**
 	 * Increments the number of times an action has been committed by one, and
