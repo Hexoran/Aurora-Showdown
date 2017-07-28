@@ -1,5 +1,5 @@
 /**
-Meadow Plugins
+Aurora Plugins
  **/
 EM.nameColor = function (name, bold) {
         return (bold ? "<b>" : "") + "<font color=" + EM.Color(name) + ">" + (Users(name) && Users(name).connected && Users.getExact(name) ? Chat.escapeHTML(Users.getExact(name).name) : Chat.escapeHTML(name)) + "</font>" + (bold ? "</b>" : "");
@@ -48,7 +48,7 @@ const messages = [
  exports.commands = {
 	hoster: {
         	add: function (target, room, user, userid) {
-			if (!this.userid == 'deltaskiez') return this.errorReply('This command can only be used by DeltaSkiez');
+			if (!this.userid == 'alphaicy') return this.errorReply('This command can only be used by DeltaSkiez');
 			let hoster = toId(target);
 			if (!hoster) return this.parse('/hoster');
 			if (isHoster(hoster)) return this.errorReply(hoster + ' is already a vip.');
@@ -117,7 +117,7 @@ const messages = [
 	 
 	credit: 'credits',
 	credits: function (target, room, user) {
-		let popup = "|html|" + "<font size=5><u><b>Meadow Credits</b></u></font><br />" +
+		let popup = "|html|" + "<font size=5><u><b>Creditos de Aurora</b></u></font><br />" +
 			"<br />" +
 			"<u><b>Server Maintainers:</u></b><br />" +
 			"- " + EM.nameColor('DeltaSkiez', true) + " (Owner, Sysadmin, Development)<br />" +
@@ -182,7 +182,7 @@ staff: 'authlist',
 	stafflist: 'authlist',
 	auth: 'authlist',
 	authlist: function(target, room, user, connection) {
-		var ignoreUsers = ['kimpossible25'];
+		var ignoreUsers = ['deltaskiez'];
 		fs.readFile(DATA_DIR + 'usergroups.csv', 'utf8', function(err, data) {
 			var staff = {
 				"admins": [],
@@ -190,7 +190,6 @@ staff: 'authlist',
 				"bots": [],
 				"mods": [],
 				"drivers": [],
-				"operators": [],
 				"voices": [],
 			};
 			var row = ('' + data).split('\n');
@@ -227,10 +226,6 @@ staff: 'authlist',
 						if (~ignoreUsers.indexOf(personId)) break;
 						staff['drivers'].push(formatName(person));
 						break;
-					case '$':
-						if (~ignoreUsers.indexOf(personId)) break;
-						staff['operators'].push(formatName(person));
-						break;
 					case '+':
 						if (~ignoreUsers.indexOf(personId)) break;
 						staff['voices'].push(formatName(person));
@@ -240,15 +235,14 @@ staff: 'authlist',
 				}
 			}
 			connection.popup('|html|' +
-				'<h3>Meadow Server Authority</h3>' +
-				'<b><u>~Administrators' +  ' (' + staff['admins'].length + ')</u></b>:<br />' + staff['admins'].join(', ') +
-				'<br /><b><u>&Leaders' +  ' (' + staff['leaders'].length + ')</u></b>:<br />' + staff['leaders'].join(', ') +
+				'<h3>Autoridad de Aurora</h3>' +
+				'<b><u>~Administradores' +  ' (' + staff['admins'].length + ')</u></b>:<br />' + staff['admins'].join(', ') +
+				'<br /><b><u>&Lideres' +  ' (' + staff['leaders'].length + ')</u></b>:<br />' + staff['leaders'].join(', ') +
 				'<br /><b><u>*Bots (' + staff['bots'].length + ')</u></b>:<br />' + staff['bots'].join(', ') +
-				'<br /><b><u>@Moderators (' + staff['mods'].length + ')</u></b>:<br />' + staff['mods'].join(', ') +
-				'<br /><b><u>%Drivers (' + staff['drivers'].length + ')</u></b>:<br />' + staff['drivers'].join(', ') +
-				'<br /><b><u>$Operators (' + staff['operators'].length + ')</u></b>:<br />' + staff['operators'].join(', ') +
-				'<br /><b><u>+Voices (' + staff['voices'].length + ')</u></b>:<br />' + staff['voices'].join(', ') +
-				'<br /><br />(<b>Bold</b> / <i>italic</i> = currently online)'
+				'<br /><b><u>@Moderadores (' + staff['mods'].length + ')</u></b>:<br />' + staff['mods'].join(', ') +
+				'<br /><b><u>%Conductores (' + staff['drivers'].length + ')</u></b>:<br />' + staff['drivers'].join(', ') +
+				'<br /><b><u>+Voceros (' + staff['voices'].length + ')</u></b>:<br />' + staff['voices'].join(', ') +
+				'<br /><br />(<b>Bold</b> / <i>italic</i> = actualmente en linea)'
 			);
 		});
 	},
