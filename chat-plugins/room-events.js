@@ -47,8 +47,6 @@ exports.commands = {
 			const eventId = toId(eventName);
 			if (!eventId) return this.errorReply("Event names must contain at least one alphanumerical character.");
 
-<<<<<<< HEAD
-=======
 			if (room.events[eventId] && this.cmd === 'add') {
 				this.errorReply(`There's already an event named '${eventId}'; to replace it, use /roomevents edit`);
 				this.sendReplyBox(Chat.html`<code>/roomevents edit ${room.events[eventId].eventName} | ${room.events[eventId].date} | ${room.events[eventId].desc}</code>`);
@@ -59,17 +57,12 @@ exports.commands = {
 				return;
 			}
 
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 			room.events[eventId] = {
 				eventName: eventName,
 				date: date,
 				desc: desc,
 			};
-<<<<<<< HEAD
-			this.privateModCommand(`(${user.name} added a roomevent titled "${eventName}".)`);
-=======
 			this.privateModCommand(`(${user.name} ${this.cmd}ed ${this.cmd === 'add' ? 'a' : 'the'} roomevent titled "${eventName}".)`);
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 
 			room.chatRoomData.events = room.events;
 			Rooms.global.writeChatRoomData();
@@ -101,11 +94,7 @@ exports.commands = {
 
 			if (!this.runBroadcast()) return;
 			this.sendReplyBox(`<table border="1" cellspacing="0" cellpadding="3"><tr><td>${Chat.escapeHTML(room.events[target].eventName)}</td><td>${Chat.parseText(room.events[target].desc)}</td><td>${Chat.escapeHTML(room.events[target].date)}</td></tr></table>`);
-<<<<<<< HEAD
-			if (!this.broadcasting && user.can('declare', null, room)) this.sendReplyBox(Chat.html `<code>/roomevents add ${room.events[target].eventName} | ${room.events[target].date} | ${room.events[target].desc}</code>`);
-=======
 			if (!this.broadcasting && user.can('declare', null, room)) this.sendReplyBox(Chat.html`<code>/roomevents add ${room.events[target].eventName} | ${room.events[target].date} | ${room.events[target].desc}</code>`);
->>>>>>> a9e28b0f459b71f61385daeb2db4e5ccd087ad8f
 		},
 		help: function (target, room, user) {
 			return this.parse('/help roomevents');
