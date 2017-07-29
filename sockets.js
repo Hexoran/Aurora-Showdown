@@ -15,6 +15,7 @@
 
 const cluster = require('cluster');
 global.Config = require('./config/config');
+global.DATA_DIR = (process.env.OPENSHIFT_DATA_DIR) ? process.env.OPENSHIFT_DATA_DIR : './config/';
 
 if (cluster.isMaster) {
 	cluster.setupMaster({
@@ -218,8 +219,8 @@ if (cluster.isMaster) {
 	// Static server
 	const StaticServer = require('node-static').Server;
 	const roomidRegex = /^\/(?:[A-Za-z0-9][A-Za-z0-9-]*)\/?$/;
-	const cssServer = new StaticServer('./config');
-	const avatarServer = new StaticServer('./config/avatars');
+	const cssServer = new StaticServer(DATA_DIR);
+	const avatarServer = new StaticServer(DATA_DIR + 'avatars');
 	const staticServer = new StaticServer('./static');
 	const staticRequestHandler = (req, res) => {
 		// console.log(`static rq: ${req.socket.remoteAddress}:${req.socket.remotePort} -> ${req.socket.localAddress}:${req.socket.localPort} - ${req.method} ${req.url} ${req.httpVersion} - ${req.rawHeaders.join('|')}`);
