@@ -273,7 +273,7 @@ class GlobalRoom {
 
 		this.chatRoomData = [];
 		try {
-			this.chatRoomData = require('./config/chatrooms.json');
+			this.chatRoomData = require(DATA_DIR + 'chatrooms.json');
 			if (!Array.isArray(this.chatRoomData)) this.chatRoomData = [];
 		} catch (e) {} // file doesn't exist [yet]
 
@@ -342,9 +342,9 @@ class GlobalRoom {
 					.replace(/\{"title":/g, '\n{"title":')
 					.replace(/\]$/, '\n]');
 
-				await FS('config/chatrooms.json.0').write(data);
+				await FS(DATA_DIR + 'chatrooms.json.0').write(data);
 				data = null;
-				await FS('config/chatrooms.json.0').rename('config/chatrooms.json');
+				await FS(DATA_DIR + 'chatrooms.json.0').rename(DATA_DIR + 'chatrooms.json');
 				writing = false;
 				if (writePending) {
 					writePending = false;
@@ -389,7 +389,7 @@ class GlobalRoom {
 		);
 
 		// Create writestream for modlog
-		this.modlogStream = FS('logs/modlog/modlog_global.txt').createAppendStream();
+		this.modlogStream = FS(LOGS_DIR + 'modlog/modlog_global.txt').createAppendStream();
 	}
 
 	reportUserStats() {
@@ -1458,8 +1458,8 @@ Rooms.createChatRoom = function (roomid, title, data) {
 	return room;
 };
 
-Rooms.battleModlogStream = FS('logs/modlog/modlog_battle.txt').createAppendStream();
-Rooms.groupchatModlogStream = FS('logs/modlog/modlog_groupchat.txt').createAppendStream();
+Rooms.battleModlogStream = FS(LOGS_DIR +  'modlog/modlog_battle.txt').createAppendStream();
+Rooms.groupchatModlogStream = FS(LOGS_DIR +  'modlog/modlog_groupchat.txt').createAppendStream();
 
 Rooms.global = null;
 Rooms.lobby = null;
