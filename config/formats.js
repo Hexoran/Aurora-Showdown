@@ -252,7 +252,8 @@ exports.Formats = [
 			'Marowak-Alola', 'Marshadow', 'Milotic', 'Mimikyu', 'Muk-Alola', 'Ninetales-Alola', 'Oranguru', 'Pelipper', 'Pheromosa', 'Politoed',
 			'Porygon2', 'Rotom-Wash', 'Scrafty', 'Snorlax', 'Suicune', 'Sylveon', 'Tapu Bulu', 'Tapu Fini', 'Tapu Koko', 'Tapu Lele',
 			'Terrakion', 'Torkoal', 'Tyranitar', 'Venusaur', 'Volcanion', 'Volcarona', 'Weavile', 'Whimsicott', 'Zapdos', 'Zygarde-Base',
-			'Battle Bond', 'Banettite', 'Blazikenite', 'Cameruptite', 'Charizardite Y', 'Galladite', 'Gardevoirite', 'Gengarite', 'Gyaradosite', 'Kangaskhanite', 'Lopunnite', 'Mawilite', 'Metagrossite', 'Salamencite', 'Sceptilite', 'Swampertite', 'Tyranitarite',
+			'Battle Bond', 'Aggronite', 'Banettite', 'Blazikenite', 'Cameruptite', 'Charizardite Y', 'Galladite', 'Gardevoirite', 'Gengarite',
+			'Gyaradosite', 'Kangaskhanite', 'Lopunnite', 'Mawilite', 'Metagrossite', 'Salamencite', 'Sceptilite', 'Swampertite', 'Tyranitarite',
 		],
 	},
 	{
@@ -270,6 +271,7 @@ exports.Formats = [
 			validate: [4, 6],
 			battle: 4,
 		},
+		timer: {starting: 15 * 60, perTurn: 10, maxPerTurn: 60},
 		ruleset: ['Pokemon', 'Species Clause', 'Nickname Clause', 'Item Clause', 'Team Preview', 'Cancel Mod', 'Alola Pokedex'],
 		banlist: ['Illegal', 'Unreleased', 'Solgaleo', 'Lunala', 'Necrozma', 'Magearna', 'Marshadow', 'Zygarde', 'Mega'],
 		requirePlus: true,
@@ -604,6 +606,7 @@ exports.Formats = [
 	{
 		name: "[Gen 6] Battle Factory",
 
+		mod: 'gen6',
 		team: 'randomFactory',
 		ruleset: ['Pokemon', 'Sleep Clause Mod', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod', 'Mega Rayquaza Clause'],
 	},
@@ -806,6 +809,7 @@ exports.Formats = [
 		name: "[Gen 6] Inverse Battle",
 		desc: ["The effectiveness of attacks is inverted."],
 
+		mod: 'gen6',
 		searchShow: false,
 		ruleset: ['Pokemon', 'Inverse Mod', 'Endless Battle Clause', 'Team Preview', 'HP Percentage Mod', 'Cancel Mod'],
 		banlist: ['Illegal', 'Unreleased'],
