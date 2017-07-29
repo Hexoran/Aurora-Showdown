@@ -17,9 +17,9 @@ let Punishments = module.exports;
 
 const FS = require('./fs');
 
-const PUNISHMENT_FILE = 'config/punishments.tsv';
-const ROOM_PUNISHMENT_FILE = 'config/room-punishments.tsv';
-const SHAREDIPS_FILE = 'config/sharedips.tsv';
+const PUNISHMENT_FILE = DATA_DIR + 'punishments.tsv';
+const ROOM_PUNISHMENT_FILE = DATA_DIR + 'room-punishments.tsv';
+const SHAREDIPS_FILE = DATA_DIR + 'sharedips.tsv';
 
 const RANGELOCK_DURATION = 60 * 60 * 1000; // 1 hour
 const LOCK_DURATION = 48 * 60 * 60 * 1000; // 48 hours
@@ -314,7 +314,7 @@ Punishments.renderEntry = function (entry, id) {
 };
 
 Punishments.loadBanlist = async function () {
-	const data = await FS('config/ipbans.txt').readTextIfExists();
+	const data = await FS(DATA_DIR + 'ipbans.txt').readTextIfExists();
 	if (!data) return;
 	let rangebans = [];
 	for (const row of data.split("\n")) {
