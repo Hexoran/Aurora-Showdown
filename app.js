@@ -44,6 +44,11 @@
 
 const FS = require('./fs');
 
+/* ----------------Data-Directory------------*/
+global.DATA_DIR = (process.env.OPENSHIFT_DATA_DIR) ? process.env.OPENSHIFT_DATA_DIR : './config/';
+global.LOGS_DIR = (process.env.OPENSHIFT_DATA_DIR) ? (process.env.OPENSHIFT_DATA_DIR + 'logs/') : './logs/';
+global.DB_DIR = (process.env.OPENSHIFT_DATA_DIR) ? process.env.OPENSHIFT_DATA_DIR : './config/db/';
+
 // Check for version and dependencies
 try {
 	// I've gotten enough reports by people who don't use the launch
@@ -70,6 +75,21 @@ try {
 }
 
 global.Config = require('./config/config');
+
+if (!FS(DATA_DIR + "avatars/")) {
+	FS(DATA_DIR + "avatars/");
+}
+
+if (!FS(DB_DIR)) {
+	FS(DB_DIR);
+}
+
+if (!FS(LOGS_DIR)) {
+	FS(LOGS_DIR);
+	FS(LOGS_DIR + 'chat/');
+	FS(LOGS_DIR + 'modlog/');
+	FS(LOGS_DIR + 'repl/');
+}
 
 if (Config.watchconfig) {
 	let configPath = require.resolve('./config/config');
