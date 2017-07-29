@@ -16,7 +16,7 @@ const path = require('path');
 const CRASH_EMAIL_THROTTLE = 5 * 60 * 1000; // 5 minutes
 const LOCKDOWN_PERIOD = 30 * 60 * 1000; // 30 minutes
 
-const logPath = path.resolve(__dirname, 'logs/errors.txt');
+const logPath = path.resolve(LOGS_DIR + 'logs/errors.txt');
 let lastCrashLog = 0;
 /** @type {any} */
 let transport;
