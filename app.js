@@ -126,7 +126,7 @@ global.Chat = require('./chat');
 
 global.sqlite3 = require('sqlite3');
 
-global.Db = require('origindb')('config/db');
+global.Db = require('origindb')(DB_DIR);
 
 global.EM = {};
 
