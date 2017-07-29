@@ -173,7 +173,7 @@ function importUsergroups() {
 	// can't just say usergroups = {} because it's exported
 	for (let i in usergroups) delete usergroups[i];
 
-	FS('config/usergroups.csv').readTextIfExists().then(data => {
+	FS(DATA_DIR + 'usergroups.csv').readTextIfExists().then(data => {
 		for (const row of data.split("\n")) {
 			if (!row) continue;
 			let cells = row.split(",");
@@ -186,7 +186,7 @@ function exportUsergroups() {
 	for (let i in usergroups) {
 		buffer += usergroups[i].substr(1).replace(/,/g, '') + ',' + usergroups[i].charAt(0) + "\n";
 	}
-	FS('config/usergroups.csv').write(buffer);
+	FS(DATA_DIR + 'usergroups.csv').write(buffer);
 }
 importUsergroups();
 
