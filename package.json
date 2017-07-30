@@ -18,7 +18,6 @@
     "forever": "^0.15.2",
     "mysql": "^2.10.2",
     "node-serialize": "0.0.4",
-    "sqlite3": "^3.1.4",
     "node-static": "0.7.6",
     "origindb": "2.5.2",
     "request": "2.67.0",
