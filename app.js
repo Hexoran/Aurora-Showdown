@@ -76,19 +76,19 @@ try {
 
 global.Config = require('./config/config');
 
-if (!FS(DATA_DIR + "avatars/")) {
-	FS(DATA_DIR + "avatars/");
+if (!fs.existsSync(DATA_DIR + "avatars/")) {
+	fs.mkdirSync(DATA_DIR + "avatars/");
 }
 
-if (!FS(DB_DIR)) {
-	FS(DB_DIR);
+if (!fs.existsSync(DB_DIR)) {
+	fs.mkdirSync(DB_DIR);
 }
 
-if (!FS(LOGS_DIR)) {
-	FS(LOGS_DIR);
-	FS(LOGS_DIR + 'chat/');
-	FS(LOGS_DIR + 'modlog/');
-	FS(LOGS_DIR + 'repl/');
+if (!fs.existsSync(LOGS_DIR)) {
+	fs.mkdirSync(LOGS_DIR);
+	fs.mkdirSync(LOGS_DIR + 'chat/');
+	fs.mkdirSync(LOGS_DIR + 'modlog/');
+	fs.mkdirSync(LOGS_DIR + 'repl/');
 }
 
 if (Config.watchconfig) {
