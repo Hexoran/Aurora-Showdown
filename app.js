@@ -42,7 +42,7 @@
 
 'use strict';
 
-const FS = require('./fs');
+const fs = require('fs');
 
 /* ----------------Data-Directory------------*/
 global.DATA_DIR = (process.env.OPENSHIFT_DATA_DIR) ? process.env.OPENSHIFT_DATA_DIR : './config/';
@@ -93,7 +93,8 @@ if (!fs.existsSync(LOGS_DIR)) {
 
 if (Config.watchconfig) {
 	let configPath = require.resolve('./config/config');
-	FS(configPath).onModify(() => {
+	fs.watchFile(configPath, (curr, prev) => {
+		if (curr.mtime <= prev.mtime) return;
 		try {
 			delete require.cache[configPath];
 			global.Config = require('./config/config');
